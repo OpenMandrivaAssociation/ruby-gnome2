@@ -13,6 +13,11 @@ URL: http://ruby-gnome2.sourceforge.jp/
 Source0: http://ovh.dl.sourceforge.net/sourceforge/ruby-gnome2/%{name}-all-%{version}.tar.bz2
 Patch0:	ruby-gnome2-0.16.0-libglade_nil_check.patch
 Patch1:	ruby-gnome2-0.16.0-gtk_warning.patch
+Patch2:	ruby-gnome2-0.16.0-timeout_add_seconds.patch
+Patch3:	ruby-gnome2-0.16.0-rbgtk_register_treeiter_set_value_func.patch
+Patch4:	ruby-gnome2-0.16.0-rbgobj_boxed_get.patch
+Patch5:	ruby-gnome2-0.16.0-G_TYPE_UNICODE_SCRIPT_TYPE.patch
+Patch6:	ruby-gnome2-0.16.0-poppler.patch
 BuildRoot: %{_tmppath}/%{name}-buildroot
 
 BuildRequires: ruby-devel libGConf2-devel libgnomeui2-devel
@@ -225,6 +230,11 @@ Mozilla Gecko renderer.
 %setup -q -n ruby-gnome2-all-%version
 %patch0 -p0
 %patch1 -p0
+%patch2 -p0
+%patch3 -p0
+%patch4 -p0
+%patch5 -p0
+%patch6 -p0
 
 %build
 ruby extconf.rb
