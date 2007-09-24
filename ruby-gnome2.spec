@@ -1,6 +1,6 @@
 %define name ruby-gnome2
 %define version 0.16.0
-%define release %mkrel 2
+%define release %mkrel 3
 %define rubyver 1.8
 
 Summary: Set of Ruby language bindings for the GNOME 2.0
@@ -19,7 +19,6 @@ BuildRequires: ruby-devel libGConf2-devel libgnomeui2-devel
 BuildRequires: libgnomecanvas2-devel libart_lgpl-devel > 2 png-devel
 BuildRequires: gtk+2-devel pango-devel libgdk_pixbuf2.0-devel
 BuildRequires: atk-devel glib2-devel gnome-vfs2-devel
-BuildRequires: libgstreamer0.8-devel
 BuildRequires: libgtkhtml2-devel > 2.4 gtkglext-devel 
 BuildRequires: gda2.0-devel >= 1.0.2
 BuildRequires: libglade2.0-devel libpanel-applet-2-devel
