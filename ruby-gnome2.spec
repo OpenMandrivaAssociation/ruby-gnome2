@@ -27,11 +27,11 @@ BuildRequires: atk-devel glib2-devel gnome-vfs2-devel
 BuildRequires: libgtkhtml2-devel > 2.4 gtkglext-devel 
 BuildRequires: gda2.0-devel >= 1.0.2
 BuildRequires: libglade2.0-devel libpanel-applet-2-devel
-BuildRequires: gtksourceview-devel >= 1.0.1
+BuildRequires: gtksourceview1-devel >= 1.0.1
 BuildRequires: librsvg-devel >= 2.8.0
 BuildRequires: libgnomeprintui-devel >= 2.8.0 libgnomeprint-devel >= 2.6.0
 BuildRequires: libvte-devel
-BuildRequires: libpoppler-devel
+BuildRequires: libpoppler-devel libpoppler-glib-devel
 BuildRequires: libmozilla-firefox-devel
 
 Requires: ruby >= %{rubyver}
