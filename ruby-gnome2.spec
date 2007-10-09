@@ -44,7 +44,7 @@ set of Ruby language bindings for the GNOME 2.0 development environment. This
 is the next generation of Ruby-GNOME.
 
 %package devel
-Summary: Headers for developing with Ruby/Gnome2, Ruby/Gtk2, ...
+Summary: Headers for developing with Ruby/Gnome2, Ruby/Gtk2, .
 License: LGPL
 Group: Development/Ruby
 Requires: %name = %version
