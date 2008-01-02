@@ -18,6 +18,7 @@ Patch3:	ruby-gnome2-0.16.0-rbgtk_register_treeiter_set_value_func.patch
 Patch4:	ruby-gnome2-0.16.0-rbgobj_boxed_get.patch
 Patch5:	ruby-gnome2-0.16.0-G_TYPE_UNICODE_SCRIPT_TYPE.patch
 Patch6:	ruby-gnome2-0.16.0-poppler.patch
+BuildRoot: %{_tmppath}/%{name}-buildroot
 
 BuildRequires: ruby-devel libGConf2-devel libgnomeui2-devel
 BuildRequires: libgnomecanvas2-devel libart_lgpl-devel > 2 png-devel
