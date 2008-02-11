@@ -1,6 +1,6 @@
 %define name ruby-gnome2
 %define version 0.16.0
-%define release %mkrel 3
+%define release %mkrel 4
 %define rubyver 1.8
 
 Summary: Set of Ruby language bindings for the GNOME 2.0
@@ -18,6 +18,7 @@ Patch3:	ruby-gnome2-0.16.0-rbgtk_register_treeiter_set_value_func.patch
 Patch4:	ruby-gnome2-0.16.0-rbgobj_boxed_get.patch
 Patch5:	ruby-gnome2-0.16.0-G_TYPE_UNICODE_SCRIPT_TYPE.patch
 Patch6:	ruby-gnome2-0.16.0-poppler.patch
+Patch7:	ruby-gnome2-0.16.0-CVE-2007-6183.patch
 BuildRoot: %{_tmppath}/%{name}-buildroot
 
 BuildRequires: ruby-devel libGConf2-devel libgnomeui2-devel
@@ -235,6 +236,7 @@ Mozilla Gecko renderer.
 %patch4 -p0
 %patch5 -p0
 %patch6 -p0
+%patch7 -p1 -b .cve-2007-6183
 
 %build
 ruby extconf.rb
