@@ -19,6 +19,7 @@ Patch4:	ruby-gnome2-0.16.0-rbgobj_boxed_get.patch
 Patch5:	ruby-gnome2-0.16.0-G_TYPE_UNICODE_SCRIPT_TYPE.patch
 Patch6:	ruby-gnome2-0.16.0-poppler.patch
 Patch7:	ruby-gnome2-0.16.0-CVE-2007-6183.patch
+Patch8:	ruby-gnome2-0.16.0-glib2.0-2.15.5-fix-mkenums.patch
 BuildRoot: %{_tmppath}/%{name}-buildroot
 
 BuildRequires: ruby-devel libGConf2-devel libgnomeui2-devel
@@ -237,6 +238,7 @@ Mozilla Gecko renderer.
 %patch5 -p0
 %patch6 -p0
 %patch7 -p1 -b .cve-2007-6183
+%patch8 -p1
 
 %build
 ruby extconf.rb
