@@ -35,6 +35,7 @@ BuildRequires: libgnomeprintui-devel >= 2.8.0 libgnomeprint-devel >= 2.6.0
 BuildRequires: libvte-devel
 BuildRequires: libpoppler-devel libpoppler-glib-devel
 BuildRequires: libmozilla-firefox-devel
+BuildRequires: libcairo-devel
 
 Requires: ruby >= %{rubyver}
 Requires: ruby-libart2 = %version
