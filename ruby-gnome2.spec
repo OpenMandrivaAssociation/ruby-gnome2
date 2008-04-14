@@ -1,6 +1,6 @@
 %define name ruby-gnome2
 %define version 0.16.0
-%define release %mkrel 4
+%define release %mkrel 5
 %define rubyver 1.8
 
 Summary: Set of Ruby language bindings for the GNOME 2.0
