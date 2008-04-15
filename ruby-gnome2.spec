@@ -43,8 +43,8 @@ Requires: ruby-gtk2 = %version
 Requires: ruby-gnomecanvas2 = %version
 
 %description
-set of Ruby language bindings for the GNOME 2.0 development environment. This
-is the next generation of Ruby-GNOME.
+This is a set of Ruby language bindings for the GNOME 2.0 development
+environment. This is the next generation of Ruby-GNOME.
 
 %package devel
 Summary: Headers for developing with Ruby/Gnome2, Ruby/Gtk2, 
