@@ -1,7 +1,7 @@
 %define _disable_ld_no_undefined 1
 %define name ruby-gnome2
 %define version 0.16.0
-%define release %mkrel 6
+%define release %mkrel 7
 %define rubyver 1.8
 
 Summary: Set of Ruby language bindings for the GNOME 2.0
@@ -244,9 +244,10 @@ Mozilla Gecko renderer.
 %patch8 -p1
 %patch9 -p1 -b .poppler0.7
 
-find -name depend -exec sed -i s/sitearchdir/vendorarchdir/ {} \;
+#find -name depend -exec sed -i s/sitearchdir/vendorarchdir/ {} \;
 
 %build
+#ruby extconf.rb --vendor
 ruby extconf.rb --vendor
 %make
 
@@ -254,7 +255,7 @@ find */* -name \*.rb -exec sed -i -e 's|/usr/local/bin/ruby|/usr/bin/ruby|' {} \
 
 %install
 rm -rf %buildroot
-make install DESTDIR=%buildroot libdir=%buildroot%{_libdir} archdir=%buildroot%ruby_vendorarchdir
+make install DESTDIR=%buildroot libdir=%buildroot%{_libdir} archdir=%buildroot%ruby_sitearchdir
 
 mkdir -p %buildroot%{_bindir}
 cp libglade/bin/* %buildroot%{_bindir}
@@ -275,135 +276,135 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n ruby-glib2
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/glib2.so
-%{ruby_vendorlibdir}/glib2.rb
-%{ruby_vendorlibdir}/glib-mkenums.rb
+%{ruby_sitearchdir}/glib2.so
+%{ruby_sitelibdir}/glib2.rb
+%{ruby_sitelibdir}/glib-mkenums.rb
 %doc AUTHORS glib/{COPYING.LIB,ChangeLog,README}
 
 %files -n ruby-gtk2
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/gtk2.so
-%{ruby_vendorlibdir}/gtk2.rb
-%{ruby_vendorlibdir}/gtk2/base.rb
+%{ruby_sitearchdir}/gtk2.so
+%{ruby_sitelibdir}/gtk2.rb
+%{ruby_sitelibdir}/gtk2/base.rb
 %doc AUTHORS gtk/{COPYING.LIB,ChangeLog,README,sample}
 
 %files -n ruby-gdkpixbuf2
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/gdk_pixbuf2.so
-%{ruby_vendorlibdir}/gdk_pixbuf2.rb
+%{ruby_sitearchdir}/gdk_pixbuf2.so
+%{ruby_sitelibdir}/gdk_pixbuf2.rb
 %doc AUTHORS gdkpixbuf/{COPYING.LIB,ChangeLog,README,sample}
 
 %files -n ruby-panelapplet2
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/panelapplet2.so
-%{ruby_vendorlibdir}/panelapplet2.rb
+%{ruby_sitearchdir}/panelapplet2.so
+%{ruby_sitelibdir}/panelapplet2.rb
 %doc AUTHORS panel-applet/{COPYING.LIB,ChangeLog,README,sample}
 
 %files -n ruby-pango
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/pango.so
-%{ruby_vendorlibdir}/pango.rb
+%{ruby_sitearchdir}/pango.so
+%{ruby_sitelibdir}/pango.rb
 %doc AUTHORS pango/{COPYING.LIB,ChangeLog,README,sample}
 
 %files -n ruby-libglade2
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/libglade2.so
-%{ruby_vendorlibdir}/libglade2.rb
+%{ruby_sitearchdir}/libglade2.so
+%{ruby_sitelibdir}/libglade2.rb
 /usr/bin/ruby-glade-create-template
 %doc AUTHORS libglade/{COPYING.LIB,ChangeLog,README,sample}
 
 %files -n ruby-libart2
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/libart2.so
+%{ruby_sitearchdir}/libart2.so
 %doc AUTHORS libart/{COPYING.LIB,ChangeLog,README,sample}
 
 %files
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/gnome2.so
-%{ruby_vendorlibdir}/gnome2.rb
+%{ruby_sitearchdir}/gnome2.so
+%{ruby_sitelibdir}/gnome2.rb
 %doc AUTHORS gnome/{COPYING.LIB,ChangeLog,README,sample}
 
 %files -n ruby-gnomecanvas2
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/gnomecanvas2.so
-%{ruby_vendorlibdir}/gnomecanvas2.rb
+%{ruby_sitearchdir}/gnomecanvas2.so
+%{ruby_sitelibdir}/gnomecanvas2.rb
 %doc AUTHORS gnomecanvas/{COPYING.LIB,ChangeLog,README,sample}
 
 %files -n ruby-gconf2
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/gconf2.so
-%{ruby_vendorlibdir}/gconf2.rb
+%{ruby_sitearchdir}/gconf2.so
+%{ruby_sitelibdir}/gconf2.rb
 %doc AUTHORS gconf/{COPYING.LIB,ChangeLog,README,tests}
 
 %files -n ruby-gnomevfs2
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/gnomevfs.so
-%{ruby_vendorlibdir}/gnomevfs.rb
+%{ruby_sitearchdir}/gnomevfs.so
+%{ruby_sitelibdir}/gnomevfs.rb
 %doc AUTHORS gnomevfs/{COPYING.LIB,ChangeLog,README,tests}
 
 %files -n ruby-gtkhtml2
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/gtkhtml2.so
-%{ruby_vendorlibdir}/gtkhtml2.rb
+%{ruby_sitearchdir}/gtkhtml2.so
+%{ruby_sitelibdir}/gtkhtml2.rb
 %doc AUTHORS gtkhtml2/{COPYING.LIB,ChangeLog,README,sample}
 
 %files -n ruby-gtkglext
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/gtkglext.so
-%{ruby_vendorlibdir}/gtkglext.rb
+%{ruby_sitearchdir}/gtkglext.so
+%{ruby_sitelibdir}/gtkglext.rb
 %doc AUTHORS gtkglext/{ChangeLog,README,sample}
 
 %files -n ruby-atk
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/atk.so
-%{ruby_vendorlibdir}/atk.rb
+%{ruby_sitearchdir}/atk.so
+%{ruby_sitelibdir}/atk.rb
 %doc AUTHORS atk/{COPYING.LIB,ChangeLog,README}
 
 %files -n ruby-gtksourceview
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/gtksourceview.so
-%{ruby_vendorlibdir}/gtksourceview.rb
+%{ruby_sitearchdir}/gtksourceview.so
+%{ruby_sitelibdir}/gtksourceview.rb
 %doc AUTHORS gtksourceview/{ChangeLog,README,sample,COPYING.LIB}
 
 %files -n ruby-gnomeprint2
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/gnomeprint2.so
-%{ruby_vendorlibdir}/gnomeprint2.rb
+%{ruby_sitearchdir}/gnomeprint2.so
+%{ruby_sitelibdir}/gnomeprint2.rb
 %doc AUTHORS gnomeprint/{COPYING.LIB,ChangeLog,README,sample,test}
 
 %files -n ruby-gnomeprintui2
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/gnomeprintui2.so
-%{ruby_vendorlibdir}/gnomeprintui2.rb
+%{ruby_sitearchdir}/gnomeprintui2.so
+%{ruby_sitelibdir}/gnomeprintui2.rb
 %doc AUTHORS gnomeprintui/{ChangeLog,README,sample,COPYING.LIB}
 
 %files -n ruby-rsvg2
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/rsvg2.so
-%{ruby_vendorlibdir}/rsvg2.rb
+%{ruby_sitearchdir}/rsvg2.so
+%{ruby_sitelibdir}/rsvg2.rb
 %doc AUTHORS rsvg/{ChangeLog,README,sample,COPYING.LIB}
 
 %files -n ruby-vte
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/vte.so
-%{ruby_vendorlibdir}/vte.rb
+%{ruby_sitearchdir}/vte.so
+%{ruby_sitelibdir}/vte.rb
 %doc AUTHORS vte/{ChangeLog,README,sample,COPYING.LIB}
 
 %files -n ruby-poppler
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/poppler.so
-%{ruby_vendorlibdir}/poppler.rb
+%{ruby_sitearchdir}/poppler.so
+%{ruby_sitelibdir}/poppler.rb
 %doc AUTHORS poppler/{ChangeLog,README,sample,COPYING.LIB}
 
 %files -n ruby-gtkmozembed
 %defattr(-,root,root)
-%{ruby_vendorarchdir}/gtkmozembed.so
-%{ruby_vendorlibdir}/gtkmozembed.rb
+%{ruby_sitearchdir}/gtkmozembed.so
+%{ruby_sitelibdir}/gtkmozembed.rb
 %doc AUTHORS gtkmozembed/{ChangeLog,README,sample,COPYING.LIB}
 
 %files devel
 %defattr(-,root,root)
-%{ruby_vendorlibdir}/mkmf-gnome2.rb
-%{ruby_vendorlibdir}/pkg-config.rb
-%{ruby_vendorarchdir}/*.h
+%{ruby_sitelibdir}/mkmf-gnome2.rb
+%{ruby_sitelibdir}/pkg-config.rb
+%{ruby_sitearchdir}/*.h
 
