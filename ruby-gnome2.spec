@@ -244,6 +244,8 @@ Mozilla Gecko renderer.
 %patch8 -p1
 %patch9 -p1 -b .poppler0.7
 
+find -name depend -exec sed -i s/sitearchdir/vendorarchdir/ {} \;
+
 %build
 ruby extconf.rb --vendor
 %make
