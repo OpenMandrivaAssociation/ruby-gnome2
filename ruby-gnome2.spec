@@ -248,7 +248,7 @@ Mozilla Gecko renderer.
 
 %build
 #ruby extconf.rb --vendor
-ruby extconf.rb --vendor
+ruby extconf.rb 
 %make
 
 find */* -name \*.rb -exec sed -i -e 's|/usr/local/bin/ruby|/usr/bin/ruby|' {} \;
