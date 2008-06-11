@@ -1,7 +1,7 @@
 %define _disable_ld_no_undefined 1
 %define name ruby-gnome2
 %define version 0.16.0
-%define release %mkrel 7
+%define release %mkrel 8
 %define rubyver 1.8
 
 Summary: Set of Ruby language bindings for the GNOME 2.0
@@ -55,6 +55,11 @@ Group: Development/Ruby
 Requires: %name = %version
 Obsoletes: ruby-gtk2-devel
 Provides: ruby-gtk2-devel
+Requires: libgdk_pixbuf2.0-devel
+Requires: gtk+2-devel
+Requires: pango-devel
+Requires: libGConf2-devel
+Requires: libgnomeui2-devel
 
 %description devel
 Ruby bindings for Gnome2.
