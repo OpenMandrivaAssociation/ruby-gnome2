@@ -1,7 +1,7 @@
 %define _disable_ld_no_undefined 1
 %define name ruby-gnome2
-%define version 0.16.0
-%define release %mkrel 9
+%define version 0.17.0
+%define release %mkrel 1
 %define rubyver 1.8
 
 Summary: Set of Ruby language bindings for the GNOME 2.0
@@ -11,17 +11,7 @@ Release: %release
 License: LGPL
 Group: Development/Ruby
 URL: http://ruby-gnome2.sourceforge.jp/
-Source0: http://ovh.dl.sourceforge.net/sourceforge/ruby-gnome2/%{name}-all-%{version}.tar.bz2
-Patch0:	ruby-gnome2-0.16.0-libglade_nil_check.patch
-Patch1:	ruby-gnome2-0.16.0-gtk_warning.patch
-Patch2:	ruby-gnome2-0.16.0-timeout_add_seconds.patch
-Patch3:	ruby-gnome2-0.16.0-rbgtk_register_treeiter_set_value_func.patch
-Patch4:	ruby-gnome2-0.16.0-rbgobj_boxed_get.patch
-Patch5:	ruby-gnome2-0.16.0-G_TYPE_UNICODE_SCRIPT_TYPE.patch
-Patch6:	ruby-gnome2-0.16.0-poppler.patch
-Patch7:	ruby-gnome2-0.16.0-CVE-2007-6183.patch
-Patch8:	ruby-gnome2-0.16.0-glib2.0-2.15.5-fix-mkenums.patch
-Patch9:	ruby-gnome2-0.16.0-poppler-0.7.patch
+Source0: http://ovh.dl.sourceforge.net/sourceforge/ruby-gnome2/%{name}-all-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-buildroot
 
 BuildRequires: ruby-devel libGConf2-devel libgnomeui2-devel
@@ -36,8 +26,8 @@ BuildRequires: librsvg-devel >= 2.8.0
 BuildRequires: libgnomeprintui-devel >= 2.8.0 libgnomeprint-devel >= 2.6.0
 BuildRequires: libvte-devel
 BuildRequires: libpoppler-devel libpoppler-glib-devel
-BuildRequires: libmozilla-firefox-devel
 BuildRequires: libcairo-devel
+BuildRequires: gstreamer0.10-devel
 
 Requires: ruby >= %{rubyver}
 Requires: ruby-libart2 = %version
@@ -235,19 +225,16 @@ Requires: ruby >= %{rubyver}
 Ruby/GtkMozEmbed is a Ruby binding of GtkMozEmbed a widget embedding a
 Mozilla Gecko renderer.
 
+%package -n ruby-gst
+Summary: Ruby binding of GStreamer
+Group: Development/Ruby
+Requires: ruby-glib2 = %version 	 
+  	 
+%description -n ruby-gst
+Ruby/GStreamer is a Ruby binding of GStreamer.
 
 %prep 
 %setup -q -n ruby-gnome2-all-%version
-%patch0 -p0
-%patch1 -p0
-%patch2 -p0
-%patch3 -p0
-%patch4 -p0
-%patch5 -p0
-%patch6 -p0
-%patch7 -p1 -b .cve-2007-6183
-%patch8 -p1
-%patch9 -p1 -b .poppler0.7
 
 #find -name depend -exec sed -i s/sitearchdir/vendorarchdir/ {} \;
 
@@ -315,12 +302,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{ruby_sitearchdir}/libglade2.so
 %{ruby_sitelibdir}/libglade2.rb
-/usr/bin/ruby-glade-create-template
+%{_bindir}/ruby-glade-create-template
 %doc AUTHORS libglade/{COPYING.LIB,ChangeLog,README,sample}
 
 %files -n ruby-libart2
 %defattr(-,root,root)
 %{ruby_sitearchdir}/libart2.so
+%{ruby_sitelibdir}/libart2.rb
 %doc AUTHORS libart/{COPYING.LIB,ChangeLog,README,sample}
 
 %files
@@ -413,3 +401,8 @@ rm -rf $RPM_BUILD_ROOT
 %{ruby_sitelibdir}/pkg-config.rb
 %{ruby_sitearchdir}/*.h
 
+%files -n ruby-gst 	 
+%defattr(-,root,root) 	 
+%{ruby_sitearchdir}/gst.so 	 
+%{ruby_sitelibdir}/gst.rb 	 
+%doc AUTHORS gstreamer/{COPYING.LIB,ChangeLog,README,tests} 	 
