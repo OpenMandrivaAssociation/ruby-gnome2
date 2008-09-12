@@ -28,6 +28,7 @@ BuildRequires: libvte-devel
 BuildRequires: libpoppler-devel libpoppler-glib-devel
 BuildRequires: libcairo-devel
 BuildRequires: gstreamer0.10-devel
+BuildRequires: libbonoboui-devel libgnomeui-devel
 
 Requires: ruby >= %{rubyver}
 Requires: ruby-libart2 = %version
@@ -236,6 +237,22 @@ Requires: ruby-glib2 = %version
 %description -n ruby-gst
 Ruby/GStreamer is a Ruby binding of GStreamer.
 
+%package -n ruby-bonobo2
+Summary: Ruby binding of libbonobo-2.x
+Group: Development/Ruby
+Requires: ruby-gtk2 = %{version}
+
+%description -n ruby-bonobo2
+Ruby/Bonobo2 is a Ruby binding of libbonobo-2.x.
+
+%package -n ruby-bonoboui2
+Summary: Ruby binding of libbonoboui-2.x
+Group: Development/Ruby
+Requires: ruby-gnome2 = %{version}-%{release}
+
+%description -n ruby-bonoboui2
+Ruby/BonoboUI2 is a Ruby binding of libbonoboui-2.x.
+
 %prep 
 %setup -q -n ruby-gnome2-all-%version
 
@@ -411,3 +428,15 @@ rm -rf $RPM_BUILD_ROOT
 %{ruby_sitearchdir}/gst.so 	 
 %{ruby_sitelibdir}/gst.rb 	 
 %doc AUTHORS gstreamer/{COPYING.LIB,ChangeLog,README,tests} 	 
+
+%files -n ruby-bonobo2
+%defattr(-,root,root,-)
+%doc bonobo/ChangeLog bonobo/COPYING.LIB bonobo/README
+%{ruby_sitelibdir}/bonobo2.rb
+%{ruby_sitearchdir}/bonobo2.so
+
+%files -n ruby-bonoboui2
+%defattr(-,root,root,-)
+%doc bonoboui/ChangeLog bonoboui/COPYING.LIB bonoboui/README
+%{ruby_sitelibdir}/bonoboui2.rb
+%{ruby_sitearchdir}/bonoboui2.so
