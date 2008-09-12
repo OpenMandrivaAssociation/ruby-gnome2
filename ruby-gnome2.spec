@@ -28,7 +28,7 @@ BuildRequires: libvte-devel
 BuildRequires: libpoppler-devel libpoppler-glib-devel
 BuildRequires: libcairo-devel
 BuildRequires: gstreamer0.10-devel
-BuildRequires: libbonoboui-devel 
+BuildRequires: bonoboui-devel 
 
 Requires: ruby >= %{rubyver}
 Requires: ruby-libart2 = %version
