@@ -27,7 +27,7 @@ BuildRequires: libgnomeprintui-devel >= 2.8.0 libgnomeprint-devel >= 2.6.0
 BuildRequires: libvte-devel
 BuildRequires: libpoppler-devel libpoppler-glib-devel
 BuildRequires: libcairo-devel
-BuildRequires: gstreamer0.10-devel
+BuildRequires: gstreamer0.10-devel pkgconfig(gstreamer-plugins-base-0.10)
 BuildRequires: bonoboui-devel 
 
 Requires: ruby >= %{rubyver}
