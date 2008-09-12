@@ -216,6 +216,8 @@ Requires: ruby >= %{rubyver}
 %description -n ruby-poppler
 Ruby/Poppler is a Ruby binding of poppler-glib.
 
+%if 0
+
 %package -n ruby-gtkmozembed
 Summary: Ruby binding of GtkMozEmbed
 Group: Development/Ruby
@@ -224,6 +226,7 @@ Requires: ruby >= %{rubyver}
 %description -n ruby-gtkmozembed
 Ruby/GtkMozEmbed is a Ruby binding of GtkMozEmbed a widget embedding a
 Mozilla Gecko renderer.
+%endif
 
 %package -n ruby-gst
 Summary: Ruby binding of GStreamer
@@ -389,11 +392,13 @@ rm -rf $RPM_BUILD_ROOT
 %{ruby_sitelibdir}/poppler.rb
 %doc AUTHORS poppler/{ChangeLog,README,sample,COPYING.LIB}
 
+%if 0
 %files -n ruby-gtkmozembed
 %defattr(-,root,root)
 %{ruby_sitearchdir}/gtkmozembed.so
 %{ruby_sitelibdir}/gtkmozembed.rb
 %doc AUTHORS gtkmozembed/{ChangeLog,README,sample,COPYING.LIB}
+%endif
 
 %files devel
 %defattr(-,root,root)
