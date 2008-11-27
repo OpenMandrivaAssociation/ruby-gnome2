@@ -1,6 +1,6 @@
 %define _disable_ld_no_undefined 1
 %define name ruby-gnome2
-%define version 0.17.0
+%define version 0.18.1
 %define release %mkrel 1
 %define rubyver 1.8
 
@@ -21,7 +21,7 @@ BuildRequires: atk-devel glib2-devel gnome-vfs2-devel
 BuildRequires: libgtkhtml2-devel > 2.4 gtkglext-devel 
 BuildRequires: gda2.0-devel >= 1.0.2
 BuildRequires: libglade2.0-devel libpanel-applet-2-devel
-BuildRequires: gtksourceview1-devel >= 1.0.1
+BuildRequires: pkgconfig(gtksourceview-2.0)
 BuildRequires: librsvg-devel >= 2.8.0
 BuildRequires: libgnomeprintui-devel >= 2.8.0 libgnomeprint-devel >= 2.6.0
 BuildRequires: libvte-devel
@@ -169,13 +169,13 @@ Requires: ruby-gtk2 = %version
 %description -n ruby-panelapplet2
 Ruby/PanelApplet2 is a Ruby binding of libpanel-applet-2.x.
 
-%package -n ruby-gtksourceview
-Summary: Ruby binding of gtksourceview-1.0.x
+%package -n ruby-gtksourceview2
+Summary: Ruby binding of gtksourceview-2.0.x
 Group: Development/Ruby
 Requires: ruby-gtk2 = %version
 
-%description -n ruby-gtksourceview
-Ruby/GtkSourceView is a Ruby binding of gtksourceview-1.0.x.
+%description -n ruby-gtksourceview2
+Ruby/GtkSourceView is a Ruby binding of gtksourceview-2.0.x.
 
 %package -n ruby-gnomeprint2
 Summary: Ruby binding of libgnomeprint
@@ -373,10 +373,10 @@ rm -rf $RPM_BUILD_ROOT
 %{ruby_sitelibdir}/atk.rb
 %doc AUTHORS atk/{COPYING.LIB,ChangeLog,README}
 
-%files -n ruby-gtksourceview
+%files -n ruby-gtksourceview2
 %defattr(-,root,root)
-%{ruby_sitearchdir}/gtksourceview.so
-%{ruby_sitelibdir}/gtksourceview.rb
+%{ruby_sitearchdir}/gtksourceview2.so
+%{ruby_sitelibdir}/gtksourceview2.rb
 %doc AUTHORS gtksourceview/{ChangeLog,README,sample,COPYING.LIB}
 
 %files -n ruby-gnomeprint2
