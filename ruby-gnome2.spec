@@ -13,6 +13,7 @@ Group: Development/Ruby
 URL: http://ruby-gnome2.sourceforge.jp/
 Source0: http://ovh.dl.sourceforge.net/sourceforge/ruby-gnome2/%{name}-all-%{version}.tar.gz
 Patch0: panel-applet-r3456.patch
+Patch1: ruby-gnome2-all-0.18.1-fix-format-string.patch
 BuildRoot: %{_tmppath}/%{name}-buildroot
 
 BuildRequires: ruby-devel libGConf2-devel libgnomeui2-devel
@@ -259,6 +260,7 @@ Ruby/BonoboUI2 is a Ruby binding of libbonoboui-2.x.
 # For some reason patch thinks that the part removing the file is already applied
 rm -f panel-applet/rbpanel-applet.c
 %patch0 -p0
+%patch1 -p1
 #find -name depend -exec sed -i s/sitearchdir/vendorarchdir/ {} \;
 
 %build
