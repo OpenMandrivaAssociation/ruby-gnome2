@@ -32,6 +32,8 @@ BuildRequires: libcairo-devel
 BuildRequires: gstreamer0.10-devel pkgconfig(gstreamer-plugins-base-0.10)
 BuildRequires: bonoboui-devel 
 
+BuildConflicts:	gtksourceview1.0
+
 Requires: ruby >= %{rubyver}
 Requires: ruby-libart2 = %version
 Requires: ruby-gtk2 = %version
@@ -314,6 +316,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n ruby-panelapplet2
 %defattr(-,root,root)
 %{ruby_sitearchdir}/panelapplet2.so
+%{ruby_sitearchdir}/panelapplet2_main.so
 %{ruby_sitelibdir}/panelapplet2.rb
 %doc AUTHORS panel-applet/{COPYING.LIB,ChangeLog,README,sample}
 
