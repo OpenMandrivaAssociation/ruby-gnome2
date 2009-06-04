@@ -4,11 +4,13 @@
 %define release %mkrel 3
 %define rubyver 1.8
 
+%define build_goocanvas 0
+
 Summary: Set of Ruby language bindings for the GNOME 2.0
 Name: %name
 Version: %version
 Release: %release
-License: LGPL
+License: LGPLv2+
 Group: Development/Ruby
 URL: http://ruby-gnome2.sourceforge.jp/
 Source0: http://ovh.dl.sourceforge.net/sourceforge/ruby-gnome2/%{name}-all-%{version}.tar.gz
@@ -30,7 +32,6 @@ BuildRequires: libcairo-devel
 BuildRequires: ruby-cairo-devel
 BuildRequires: gstreamer0.10-devel pkgconfig(gstreamer-plugins-base-0.10)
 BuildRequires: bonoboui-devel 
-
 BuildConflicts:	gtksourceview1.0
 
 Requires: ruby >= %{rubyver}
@@ -256,6 +257,19 @@ Requires: ruby-gnome2 = %{version}-%{release}
 %description -n ruby-bonoboui2
 Ruby/BonoboUI2 is a Ruby binding of libbonoboui-2.x.
 
+
+%if %build_goocanvas
+%package -n ruby-goocanvas
+Summary: Ruby binding of goocanvas
+Group: Development/Ruby
+Requires: ruby-gnome2 = %{version}-%{release}
+BuildRequires: goocanvas-devel
+
+%description -n ruby-goocanvas
+Ruby/BonoboUI2 is a Ruby binding of goocanvas.
+%endif
+
+
 %prep 
 %setup -q -n ruby-gnome2-all-%version
 #find -name depend -exec sed -i s/sitearchdir/vendorarchdir/ {} \;
@@ -443,3 +457,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc bonoboui/ChangeLog bonoboui/COPYING.LIB bonoboui/README
 %{ruby_sitelibdir}/bonoboui2.rb
 %{ruby_sitearchdir}/bonoboui2.so
+
+%if %build_goocanvas
+%files -n ruby-goocanvas
+%defattr(-,root,root,-)
+%doc goocanvas/README goocanvas/Changelog
+%{ruby_sitelibdir}/goocanvas.rb
+%{ruby_sitearchdir}/goocanvas.so
+%endif
