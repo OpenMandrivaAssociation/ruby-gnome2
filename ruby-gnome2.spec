@@ -75,6 +75,7 @@ Group: Development/Ruby
 Requires: ruby-atk = %version
 Requires: ruby-pango = %version
 Requires: ruby-gdkpixbuf2 = %version
+Requires: ruby-cairo
 
 %description -n ruby-gtk2
 Ruby/GTK2 is a Ruby binding of GTK+2.0.x.
