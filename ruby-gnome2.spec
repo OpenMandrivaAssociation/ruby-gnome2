@@ -1,7 +1,7 @@
 %define _disable_ld_no_undefined 1
 %define name ruby-gnome2
 %define version 0.19.0
-%define release %mkrel 2
+%define release %mkrel 3
 %define rubyver 1.8
 
 Summary: Set of Ruby language bindings for the GNOME 2.0
@@ -27,6 +27,7 @@ BuildRequires: libgnomeprintui-devel >= 2.8.0 libgnomeprint-devel >= 2.6.0
 BuildRequires: libvte-devel
 BuildRequires: libpoppler-devel libpoppler-glib-devel
 BuildRequires: libcairo-devel
+BuildRequires: ruby-cairo-devel
 BuildRequires: gstreamer0.10-devel pkgconfig(gstreamer-plugins-base-0.10)
 BuildRequires: bonoboui-devel 
 
