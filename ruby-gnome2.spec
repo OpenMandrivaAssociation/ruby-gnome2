@@ -1,7 +1,7 @@
 %define _disable_ld_no_undefined 1
 %define name ruby-gnome2
-%define version 0.19.0
-%define release %mkrel 5
+%define version 0.19.1
+%define release %mkrel 1
 %define rubyver 1.8
 
 %define build_goocanvas 0
@@ -13,7 +13,7 @@ Release: %release
 License: LGPLv2+
 Group: Development/Ruby
 URL: http://ruby-gnome2.sourceforge.jp/
-Source0: http://ovh.dl.sourceforge.net/sourceforge/ruby-gnome2/%{name}-all-%{version}.tar.gz
+Source0: http://surfnet.dl.sourceforge.net/sourceforge/ruby-gnome2/%{name}-all-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-buildroot
 
 BuildRequires: ruby-devel libGConf2-devel libgnomeui2-devel
@@ -33,6 +33,7 @@ BuildRequires: ruby-cairo-devel
 BuildRequires: gstreamer0.10-devel pkgconfig(gstreamer-plugins-base-0.10)
 BuildRequires: bonoboui-devel 
 BuildConflicts:	gtksourceview1.0
+BuildConflicts: xulrunner-devel
 
 Requires: ruby >= %{rubyver}
 Requires: ruby-libart2 = %version
@@ -45,7 +46,7 @@ environment. This is the next generation of Ruby-GNOME.
 
 %package devel
 Summary: Headers for developing with Ruby/Gnome2, Ruby/Gtk2, 
-License: LGPL
+License: LGPLv2+
 Group: Development/Ruby
 Requires: %name = %version
 Obsoletes: ruby-gtk2-devel
@@ -299,6 +300,8 @@ do
                 chmod 0644 "$f"
         fi
 done
+
+rm -f %buildroot%{_libdir}/pkgconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
