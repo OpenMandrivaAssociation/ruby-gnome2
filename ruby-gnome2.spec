@@ -301,8 +301,6 @@ do
         fi
 done
 
-rm -f %buildroot%{_libdir}/pkgconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -443,6 +441,7 @@ rm -rf $RPM_BUILD_ROOT
 %{ruby_sitelibdir}/mkmf-gnome2.rb
 %{ruby_sitelibdir}/pkg-config.rb
 %{ruby_sitearchdir}/*.h
+%{_libdir}/pkgconfig
 
 %files -n ruby-gst 	 
 %defattr(-,root,root) 	 
