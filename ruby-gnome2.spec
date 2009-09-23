@@ -1,6 +1,6 @@
 %define _disable_ld_no_undefined 1
 %define name ruby-gnome2
-%define version 0.19.1
+%define version 0.19.2
 %define release %mkrel 1
 %define rubyver 1.8
 
