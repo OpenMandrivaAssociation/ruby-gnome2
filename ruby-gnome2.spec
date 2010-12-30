@@ -14,6 +14,7 @@ License: LGPLv2+
 Group: Development/Ruby
 URL: http://ruby-gnome2.sourceforge.jp/
 Source0: http://surfnet.dl.sourceforge.net/sourceforge/ruby-gnome2/%{name}-all-%{version}.tar.gz
+Patch0: ruby-gnome2-all-0.19.2-poppler-0.16.0.patch
 BuildRoot: %{_tmppath}/%{name}-buildroot
 
 BuildRequires: ruby-devel libGConf2-devel libgnomeui2-devel
@@ -274,6 +275,7 @@ Ruby/BonoboUI2 is a Ruby binding of goocanvas.
 
 %prep 
 %setup -q -n ruby-gnome2-all-%version
+%patch0 -p0
 #find -name depend -exec sed -i s/sitearchdir/vendorarchdir/ {} \;
 
 %build
