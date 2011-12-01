@@ -304,7 +304,7 @@ do
 done
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files -n ruby-glib2
 %defattr(-,root,root)
