@@ -88,7 +88,6 @@ Ruby/BonoboUI2 is a Ruby binding of goocanvas.
 
 %prep 
 %setup -q -n ruby-gnome2-all-%{version}
-%patch0 -p1
 #find -name depend -exec sed -i s/sitearchdir/vendorarchdir/ {} \;
 
 %build
@@ -102,7 +101,6 @@ find */* -name \*.rb -exec sed -i -e 's|/usr/local/bin/ruby|/usr/bin/ruby|' {} \
 make install DESTDIR=%{buildroot} libdir=%buildroot%{_libdir} archdir=%{buildroot}%{ruby_sitearchdir}
 
 mkdir -p %buildroot%{_bindir}
-cp libglade/bin/* %{buildroot}%{_bindir}
 
 for f in `find */test */tests */sample */samples -type f`
 do
