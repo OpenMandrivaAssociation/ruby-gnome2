@@ -1,40 +1,25 @@
-%define _disable_ld_no_undefined 1
 %define rubyver 1.9
 
-%define build_goocanvas 0
+%define build_goocanvas 1
 
 Summary:	Set of Ruby language bindings for the GNOME 2.0
 Name:		ruby-gnome2
-Version:	0.90.5
-Release:	7
+Version:	1.2.6
+Release:	1
 License:	LGPLv2+
 Group:		Development/Ruby
 URL:		http://ruby-gnome2.sourceforge.jp/
 Source0: 	http://surfnet.dl.sourceforge.net/sourceforge/ruby-gnome2/%{name}-all-%{version}.tar.gz
-Patch0:     ruby-gnome2-0.90.4-newpng.patch
 
 BuildRequires:	ruby-devel
 BuildRequires:	rubygem(pkg-config)
-BuildRequires:	pkgconfig(gconf-2.0)
-BuildRequires:	pkgconfig(libgnomeui-2.0)
-BuildRequires:	pkgconfig(libgnomecanvas-2.0)
-BuildRequires:	pkgconfig(libart-2.0)
-BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(pango)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(atk)
 BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(gnome-vfs-2.0)
-BuildRequires:	pkgconfig(libgtkhtml-2.0)
-BuildRequires:	pkgconfig(gdkglext-1.0)
-BuildRequires:	pkgconfig(libgda-3.0)
-BuildRequires:	pkgconfig(libglade-2.0)
-BuildRequires:	pkgconfig(libpanelapplet-2.0)
 BuildRequires:	pkgconfig(gtksourceview-2.0)
 BuildRequires:	pkgconfig(librsvg-2.0)
-BuildRequires:	pkgconfig(libgnomeprintui-2.2)
-BuildRequires:	pkgconfig(libgnomeprint-2.2)
 BuildRequires:	pkgconfig(vte)
 BuildRequires:	pkgconfig(poppler)
 BuildRequires:	pkgconfig(poppler-glib)
@@ -43,7 +28,10 @@ BuildRequires:	rubygem-cairo-devel
 BuildRequires:	rubygem(cairo)
 BuildRequires:	pkgconfig(gstreamer-0.10)
 BuildRequires:	pkgconfig(gstreamer-plugins-base-0.10)
-BuildRequires:	pkgconfig(libbonoboui-2.0)
+BuildRequires:	pkgconfig(gtksourceview-3.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(vte-2.90)
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildConflicts:	gtksourceview1.0
 BuildConflicts:	xulrunner-devel
 
@@ -65,83 +53,11 @@ Provides:	ruby-gtk2-devel
 Requires:	pkgconfig(gdk-pixbuf-2.0)
 Requires:	pkgconfig(gtk+-2.0)
 Requires:	pkgconfig(pango)
-Requires:	pkgconfig(gconf-2.0)
-Requires:	pkgconfig(libgnomeui-2.0)
 
 %description devel
 Ruby bindings for Gnome2.
 This package contains header files needed for developing Ruby extensions
 depending on Ruby/Gnome2, Ruby/Glib2, Ruby/Pango, ...
-
-%package -n ruby-libglade2
-Summary:	Ruby bindings of Libglade2
-Group:		Development/Ruby
-Requires:	rubygem(gtk2)
-
-%description -n ruby-libglade2
-Ruby/Libglade2 is a Ruby bindings of Libglade2.
-This provides a very simple interface to the libglade library,
-to load interfaces dynamically from a glade file.
-
-%package -n ruby-libart2
-Summary:	Ruby binding of Libart_lgpl
-Group:		Development/Ruby
-Requires:	ruby >= %{rubyver}
-
-%description -n ruby-libart2
-Ruby/Libart2 is a Ruby binding of Libart_lgpl.
-
-%package -n ruby-gnomecanvas2
-Summary:	Ruby binding of GnomeCanvas-2.x
-Group:		Development/Ruby
-Requires:	ruby-libart2 = %{version}-%{release}
-Requires:	rubygem(gtk2)
-
-%description -n ruby-gnomecanvas2
-Ruby/GnomeCanvas2 is a Ruby binding of GnomeCanvas-2.x.
-
-%package -n ruby-gconf2
-Summary:	Ruby binding of GConf-1.2.x
-Group:		Development/Ruby
-Requires:	rubygem(glib2)
-
-%description -n ruby-gconf2
-Ruby/GConf2 is a Ruby binding of GConf-1.2.x.
-
-%package -n ruby-gnomevfs2
-Summary:	Ruby binding of GnomeVFS-2.0.x
-Group:		Development/Ruby
-Requires:	rubygem(glib2)
-Requires:	ruby-gconf2 = %{version}-%{release}
-
-%description -n ruby-gnomevfs2
-Ruby/GnomeVFS is a Ruby binding of GnomeVFS-2.0.x.
-
-%package -n ruby-gtkhtml2
-Summary:	Ruby binding of GtkHtml2
-Group:		Development/Ruby
-Requires:	rubygem(gtk2)
-
-%description -n ruby-gtkhtml2
-Ruby/GtkHtml2 is a Ruby binding of GtkHtml2.
-
-%package -n ruby-gtkglext
-Summary:	Ruby binding of GtkGLExt
-Group:		Development/Ruby
-Requires:	ruby-rbogl
-Requires:	rubygem(gtk2)
-
-%description -n ruby-gtkglext
-Ruby/GtkGLExt is a Ruby binding of GtkGLExt.
-
-%package -n ruby-panelapplet2
-Summary:	Ruby binding of libpanel-applet-2.x
-Group:		Development/Ruby
-Requires:	rubygem(glib2)
-Requires:	rubygem(gtk2)
-
-%description -n ruby-panelapplet2
-Ruby/PanelApplet2 is a Ruby binding of libpanel-applet-2.x.
 
 %package -n ruby-gtksourceview2
 Summary:	Ruby binding of gtksourceview-2.0.x
@@ -151,22 +67,6 @@ Requires:	rubygem(gtk2)
 %description -n ruby-gtksourceview2
 Ruby/GtkSourceView is a Ruby binding of gtksourceview-2.0.x.
 
-%package -n ruby-gnomeprint2
-Summary:	Ruby binding of libgnomeprint
-Group:		Development/Ruby
-Requires:	ruby >= %{rubyver}
-
-%description -n ruby-gnomeprint2
-Ruby/GnomePrint is a Ruby binding of libgnomeprint.
-
-%package -n ruby-gnomeprintui2
-Summary:	Ruby binding of libgnomeprintui
-Group:		Development/Ruby
-Requires:	rubygem(gtk2)
-
-%description -n ruby-gnomeprintui2
-Ruby/GnomePrintUI is a Ruby binding of libgnomeprintui.
-
 %package -n ruby-gst
 Summary:	Ruby binding of GStreamer
 Group:		Development/Ruby
@@ -174,22 +74,6 @@ Requires:	rubygem(glib2)
   	 
 %description -n ruby-gst
 Ruby/GStreamer is a Ruby binding of GStreamer.
-
-%package -n ruby-bonobo2
-Summary:	Ruby binding of libbonobo-2.x
-Group:		Development/Ruby
-Requires:	rubygem(gtk2)
-
-%description -n ruby-bonobo2
-Ruby/Bonobo2 is a Ruby binding of libbonobo-2.x.
-
-%package -n ruby-bonoboui2
-Summary:	Ruby binding of libbonoboui-2.x
-Group:		Development/Ruby
-Requires:	ruby-gnome2 = %{version}-%{release}
-
-%description -n ruby-bonoboui2
-Ruby/BonoboUI2 is a Ruby binding of libbonoboui-2.x.
 
 %if %{build_goocanvas}
 %package -n ruby-goocanvas
@@ -263,11 +147,6 @@ rm -f %{buildroot}%{ruby_sitearchdir}/atk.so
 rm -f %{buildroot}%{ruby_sitelibdir}/atk.rb
 rm -f %{buildroot}atk/{COPYING.LIB,ChangeLog,README}
 
-# ruby-rsvg2
-rm -f %{buildroot}%{ruby_sitearchdir}/rsvg2.so
-rm -f %{buildroot}%{ruby_sitelibdir}/rsvg2.rb
-rm -rf %{buildroot}rsvg/{ChangeLog,README,sample,COPYING.LIB}
-
 # ruby-vte
 rm -f %{buildroot}%{ruby_sitearchdir}/vte.so
 rm -f %{buildroot}%{ruby_sitelibdir}/vte.rb
@@ -280,68 +159,15 @@ rm -rf %{buildroot}poppler/{ChangeLog,README,sample,COPYING.LIB}
 
 
 
-%files -n ruby-panelapplet2
-%{ruby_sitearchdir}/panelapplet2.so
-%{ruby_sitearchdir}/panelapplet2_main.so
-%{ruby_sitelibdir}/panelapplet2.rb
-%doc AUTHORS panel-applet/{COPYING.LIB,ChangeLog,README,sample}
-
-%files -n ruby-libglade2
-%{ruby_sitearchdir}/libglade2.so
-%{ruby_sitelibdir}/libglade2.rb
-%{_bindir}/ruby-glade-create-template
-%doc AUTHORS libglade/{COPYING.LIB,ChangeLog,README,sample}
-
-%files -n ruby-libart2
-%{ruby_sitearchdir}/libart2.so
-%{ruby_sitelibdir}/libart2.rb
-%doc AUTHORS libart/{COPYING.LIB,ChangeLog,README,sample}
-
 %files
 %{ruby_sitearchdir}/gnome2.so
 %{ruby_sitelibdir}/gnome2.rb
 %doc AUTHORS gnome/{COPYING.LIB,ChangeLog,README,sample}
 
-%files -n ruby-gnomecanvas2
-%{ruby_sitearchdir}/gnomecanvas2.so
-%{ruby_sitelibdir}/gnomecanvas2.rb
-%doc AUTHORS gnomecanvas/{COPYING.LIB,ChangeLog,README,sample}
-
-%files -n ruby-gconf2
-%{ruby_sitearchdir}/gconf2.so
-%{ruby_sitelibdir}/gconf2.rb
-%doc AUTHORS gconf/{COPYING.LIB,ChangeLog,README,tests}
-
-%files -n ruby-gnomevfs2
-%{ruby_sitearchdir}/gnomevfs.so
-%{ruby_sitelibdir}/gnomevfs.rb
-%doc AUTHORS gnomevfs/{COPYING.LIB,ChangeLog,README,tests}
-
-%files -n ruby-gtkhtml2
-%{ruby_sitearchdir}/gtkhtml2.so
-%{ruby_sitelibdir}/gtkhtml2.rb
-%doc AUTHORS gtkhtml2/{COPYING.LIB,ChangeLog,README,sample}
-
-%files -n ruby-gtkglext
-%{ruby_sitearchdir}/gtkglext.so
-%{ruby_sitelibdir}/gtkglext.rb
-%doc AUTHORS gtkglext/{ChangeLog,README,sample}
-
-
 %files -n ruby-gtksourceview2
 %{ruby_sitearchdir}/gtksourceview2.so
 %{ruby_sitelibdir}/gtksourceview2.rb
 %doc AUTHORS gtksourceview/{ChangeLog,README,sample,COPYING.LIB}
-
-%files -n ruby-gnomeprint2
-%{ruby_sitearchdir}/gnomeprint2.so
-%{ruby_sitelibdir}/gnomeprint2.rb
-%doc AUTHORS gnomeprint/{COPYING.LIB,ChangeLog,README,sample,test}
-
-%files -n ruby-gnomeprintui2
-%{ruby_sitearchdir}/gnomeprintui2.so
-%{ruby_sitelibdir}/gnomeprintui2.rb
-%doc AUTHORS gnomeprintui/{ChangeLog,README,sample,COPYING.LIB}
 
 
 %files devel
@@ -355,16 +181,6 @@ rm -rf %{buildroot}poppler/{ChangeLog,README,sample,COPYING.LIB}
 %{ruby_sitearchdir}/gst.so 	 
 %{ruby_sitelibdir}/gst.rb 	 
 %doc AUTHORS gstreamer/{COPYING.LIB,ChangeLog,README,tests} 	 
-
-%files -n ruby-bonobo2
-%doc bonobo/ChangeLog bonobo/COPYING.LIB bonobo/README
-%{ruby_sitelibdir}/bonobo2.rb
-%{ruby_sitearchdir}/bonobo2.so
-
-%files -n ruby-bonoboui2
-%doc bonoboui/ChangeLog bonoboui/COPYING.LIB bonoboui/README
-%{ruby_sitelibdir}/bonoboui2.rb
-%{ruby_sitearchdir}/bonoboui2.so
 
 %if %build_goocanvas
 %files -n ruby-goocanvas
