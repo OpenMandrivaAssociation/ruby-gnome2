@@ -59,6 +59,36 @@ Ruby bindings for Gnome2.
 This package contains header files needed for developing Ruby extensions
 depending on Ruby/Gnome2, Ruby/Glib2, Ruby/Pango, ...
 
+%package -n ruby-gtk3
+Summary:        Ruby binding of gtk-3.0.x
+Group:          Development/Ruby
+
+%description -n ruby-gtk3
+Ruby/Gtk3 is a Ruby binding of gtk-3.0.x.
+
+%package -n ruby-gdk3
+Summary:        Ruby binding of gdk-3.0.x
+Group:          Development/Ruby
+
+%description -n ruby-gdk3
+Ruby/Gdk3 is a Ruby binding of gdk-3.0.x.
+
+%package -n ruby-cairo-gobject
+Summary:        Ruby binding of cairo-gobject
+Group:          Development/Ruby
+Requires:       rubygem(gtk2)
+
+%description -n ruby-cairo-gobject
+Ruby/CairoGobject is a Ruby binding of cairo-gobject.
+
+%package -n ruby-gobject-introspection
+Summary:        Ruby binding of gobject-introspection
+Group:          Development/Ruby
+Requires:       rubygem(gtk2)
+
+%description -n ruby-gobject-introspection
+Ruby/GobjectIntrospection is a Ruby binding of gobject-introspection.
+
 %package -n ruby-gtksourceview2
 Summary:	Ruby binding of gtksourceview-2.0.x
 Group:		Development/Ruby
@@ -66,6 +96,14 @@ Requires:	rubygem(gtk2)
 
 %description -n ruby-gtksourceview2
 Ruby/GtkSourceView is a Ruby binding of gtksourceview-2.0.x.
+
+%package -n ruby-gtksourceview3
+Summary:        Ruby binding of gtksourceview-3.0.x
+Group:          Development/Ruby
+Requires:       rubygem(gtk3)
+
+%description -n ruby-gtksourceview3
+Ruby/GtkSourceView is a Ruby binding of gtksourceview-3.0.x.
 
 %package -n ruby-gst
 Summary:	Ruby binding of GStreamer
@@ -75,16 +113,32 @@ Requires:	rubygem(glib2)
 %description -n ruby-gst
 Ruby/GStreamer is a Ruby binding of GStreamer.
 
+%package -n ruby-rsvg2
+Summary:        Ruby binding of Rsvg2
+Group:          Development/Ruby
+Requires:       rubygem(glib2)
+
+%description -n ruby-rsvg2
+Ruby/Rsvg2 is a Ruby binding of Rsvg2.
+
+%package -n ruby-vte3
+Summary:        Ruby binding of Vte3
+Group:          Development/Ruby
+Requires:       rubygem(glib3)
+
+%description -n ruby-vte3
+Ruby/Vte3 is a Ruby binding of vte3.
+
 %if %{build_goocanvas}
 %package -n ruby-goocanvas
 Summary:	Ruby binding of goocanvas
 Group:		Development/Ruby
-Requires:	ruby-gnome2 = %{version}-%{release}
 BuildRequires:	goocanvas-devel
 
 %description -n ruby-goocanvas
 Ruby/BonoboUI2 is a Ruby binding of goocanvas.
 %endif
+
 
 %prep 
 %setup -q -n ruby-gnome2-all-%{version}
@@ -158,15 +212,47 @@ rm -rf %{buildroot}poppler/{ChangeLog,README,sample,COPYING.LIB}
 
 
 %files
-%{ruby_sitearchdir}/gnome2.so
-%{ruby_sitelibdir}/gnome2.rb
-%doc AUTHORS gnome/{COPYING.LIB,ChangeLog,README,sample}
+%doc AUTHORS COPYING.LIB NEWS README
+
+%files -n ruby-cairo-gobject
+%{ruby_sitearchdir}/cairo_gobject.so
+%{ruby_sitelibdir}/cairo_gobject.rb
+%doc AUTHORS cairo-gobject/{README.md,COPYING.LIB}
+
+%files -n ruby-gdk3
+%{ruby_sitearchdir}/gdk3.so
+%{ruby_sitelibdir}/gdk3.rb
+%doc AUTHORS gdk3/{README.md,COPYING.LIB}
+
+%files -n ruby-gobject-introspection
+%{ruby_sitearchdir}/gobject_introspection.so
+%{ruby_sitelibdir}/gobject_introspection.rb
+%doc AUTHORS gobject-introspection/{README.md,COPYING.LIB}
+
+%files -n ruby-gtk3
+%{ruby_sitearchdir}/gtk3.so
+%{ruby_sitelibdir}/gtk3.rb
+%doc AUTHORS gtk3/{README.md,COPYING.LIB,sample}
 
 %files -n ruby-gtksourceview2
 %{ruby_sitearchdir}/gtksourceview2.so
 %{ruby_sitelibdir}/gtksourceview2.rb
-%doc AUTHORS gtksourceview/{ChangeLog,README,sample,COPYING.LIB}
+%doc AUTHORS gtksourceview2/{README,sample,COPYING.LIB}
 
+%files -n ruby-rsvg2
+%{ruby_sitearchdir}/rsvg2.so
+%{ruby_sitelibdir}/rsvg2.rb
+%doc AUTHORS rsvg2/{README,sample,COPYING.LIB}
+
+%files -n ruby-gtksourceview3
+%{ruby_sitearchdir}/gtksourceview3.so
+%{ruby_sitelibdir}/gtksourceview3.rb
+%doc AUTHORS gtksourceview3/{README,sample,COPYING.LIB}
+
+%files -n ruby-vte3
+%{ruby_sitearchdir}/vte3.so
+%{ruby_sitelibdir}/vte3.rb
+%doc AUTHORS vte3/{README,sample,COPYING.LIB}
 
 %files devel
 # Seems to be no longer installed and needed
