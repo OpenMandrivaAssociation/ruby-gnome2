@@ -32,7 +32,7 @@ BuildRequires:	pkgconfig(gtksourceview-3.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(vte-2.90)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildConflicts:	gtksourceview1.0
+#BuildConflicts:	gtksourceview1.0
 BuildConflicts:	xulrunner-devel
 
 Requires:	ruby >= %{rubyver}
@@ -171,13 +171,14 @@ done
 # ruby-glib2
 rm -f %{buildroot}%{ruby_sitearchdir}/glib2.so
 rm -f %{buildroot}%{ruby_sitelibdir}/glib2.rb
+rm -rf %{buildroot}%{ruby_sitelibdir}/glib2
 rm -f %{buildroot}%{ruby_sitelibdir}/glib-mkenums.rb
 rm -f %{buildroot}glib/{COPYING.LIB,ChangeLog,README}
 
 # ruby-gtk2
 rm -f %{buildroot}%{ruby_sitearchdir}/gtk2.so
 rm -f %{buildroot}%{ruby_sitelibdir}/gtk2.rb
-rm -f %{buildroot}%{ruby_sitelibdir}/gtk2/base.rb
+rm -rf %{buildroot}%{ruby_sitelibdir}/gtk2
 rm -rf %{buildroot}gtk/{COPYING.LIB,ChangeLog,README,sample}
 
 # ruby-gdkpixbuf2
@@ -188,6 +189,7 @@ rm -rf %{buildroot}gdkpixbuf/{COPYING.LIB,ChangeLog,README,sample}
 # ruby-gio2
 rm -f %{buildroot}%{ruby_sitearchdir}/gio2.so
 rm -f %{buildroot}%{ruby_sitelibdir}/gio2.rb
+rm -rf %{buildroot}%{ruby_sitelibdir}/gio2
 
 # ruby-pango
 rm -f %{buildroot}%{ruby_sitearchdir}/pango.so
@@ -203,6 +205,7 @@ rm -f %{buildroot}atk/{COPYING.LIB,ChangeLog,README}
 rm -f %{buildroot}%{ruby_sitearchdir}/vte.so
 rm -f %{buildroot}%{ruby_sitelibdir}/vte.rb
 rm -rf %{buildroot}vte/{ChangeLog,README,sample,COPYING.LIB}
+rm -rf %{buildroot}%{ruby_sitelibdir}/vte
 
 # ruby-poppler
 rm -f %{buildroot}%{ruby_sitearchdir}/poppler.so
@@ -213,25 +216,30 @@ rm -rf %{buildroot}poppler/{ChangeLog,README,sample,COPYING.LIB}
 
 %files
 %doc AUTHORS COPYING.LIB NEWS README
+%{ruby_sitelibdir}/gnome2-*.rb
+%{ruby_sitelibdir}/mkmf-gnome2.rb
 
 %files -n ruby-cairo-gobject
 %{ruby_sitearchdir}/cairo_gobject.so
-%{ruby_sitelibdir}/cairo_gobject.rb
+%{ruby_sitelibdir}/cairo-gobject.rb
 %doc AUTHORS cairo-gobject/{README.md,COPYING.LIB}
 
 %files -n ruby-gdk3
 %{ruby_sitearchdir}/gdk3.so
 %{ruby_sitelibdir}/gdk3.rb
+%{ruby_sitelibdir}/gdk3
 %doc AUTHORS gdk3/{README.md,COPYING.LIB}
 
 %files -n ruby-gobject-introspection
 %{ruby_sitearchdir}/gobject_introspection.so
-%{ruby_sitelibdir}/gobject_introspection.rb
+%{ruby_sitelibdir}/gobject-introspection.rb
+%{ruby_sitelibdir}/gobject-introspection
 %doc AUTHORS gobject-introspection/{README.md,COPYING.LIB}
 
 %files -n ruby-gtk3
 %{ruby_sitearchdir}/gtk3.so
 %{ruby_sitelibdir}/gtk3.rb
+%{ruby_sitelibdir}/gtk3
 %doc AUTHORS gtk3/{README.md,COPYING.LIB,sample}
 
 %files -n ruby-gtksourceview2
@@ -247,11 +255,13 @@ rm -rf %{buildroot}poppler/{ChangeLog,README,sample,COPYING.LIB}
 %files -n ruby-gtksourceview3
 %{ruby_sitearchdir}/gtksourceview3.so
 %{ruby_sitelibdir}/gtksourceview3.rb
+%{ruby_sitelibdir}/gtksourceview3
 %doc AUTHORS gtksourceview3/{README,sample,COPYING.LIB}
 
 %files -n ruby-vte3
 %{ruby_sitearchdir}/vte3.so
 %{ruby_sitelibdir}/vte3.rb
+%{ruby_sitelibdir}/vte3
 %doc AUTHORS vte3/{README,sample,COPYING.LIB}
 
 %files devel
@@ -262,13 +272,13 @@ rm -rf %{buildroot}poppler/{ChangeLog,README,sample,COPYING.LIB}
 #%{_libdir}/pkgconfig
 
 %files -n ruby-gst 	 
-%{ruby_sitearchdir}/gst.so 	 
+%{ruby_sitearchdir}/gstreamer.so 	 
 %{ruby_sitelibdir}/gst.rb 	 
-%doc AUTHORS gstreamer/{COPYING.LIB,ChangeLog,README,tests} 	 
+%doc AUTHORS gstreamer/{COPYING.LIB,README,tests} 	 
 
 %if %build_goocanvas
 %files -n ruby-goocanvas
-%doc goocanvas/README goocanvas/Changelog
+%doc goocanvas/README
 %{ruby_sitelibdir}/goocanvas.rb
 %{ruby_sitearchdir}/goocanvas.so
 %endif
