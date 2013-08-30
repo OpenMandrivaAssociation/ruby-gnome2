@@ -5,7 +5,7 @@
 Summary:	Set of Ruby language bindings for the GNOME 2.0
 Name:		ruby-gnome2
 Version:	1.2.6
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		Development/Ruby
 URL:		http://ruby-gnome2.sourceforge.jp/
@@ -100,7 +100,6 @@ Ruby/GtkSourceView is a Ruby binding of gtksourceview-2.0.x.
 %package -n ruby-gtksourceview3
 Summary:        Ruby binding of gtksourceview-3.0.x
 Group:          Development/Ruby
-Requires:       rubygem(gtk3)
 
 %description -n ruby-gtksourceview3
 Ruby/GtkSourceView is a Ruby binding of gtksourceview-3.0.x.
@@ -124,7 +123,6 @@ Ruby/Rsvg2 is a Ruby binding of Rsvg2.
 %package -n ruby-vte3
 Summary:        Ruby binding of Vte3
 Group:          Development/Ruby
-Requires:       rubygem(glib3)
 
 %description -n ruby-vte3
 Ruby/Vte3 is a Ruby binding of vte3.
