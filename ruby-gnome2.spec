@@ -5,7 +5,7 @@
 Summary:	Set of Ruby language bindings for the GNOME 2.0
 Name:		ruby-gnome2
 Version:	1.2.6
-Release:	4
+Release:	5
 License:	LGPLv2+
 Group:		Development/Ruby
 URL:		http://ruby-gnome2.sourceforge.jp/
