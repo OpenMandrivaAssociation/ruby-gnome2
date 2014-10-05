@@ -26,8 +26,8 @@ BuildRequires:	pkgconfig(poppler-glib)
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	rubygem-cairo-devel
 BuildRequires:	rubygem(cairo)
-BuildRequires:	pkgconfig(gstreamer-0.10)
-BuildRequires:	pkgconfig(gstreamer-plugins-base-0.10)
+BuildRequires:	pkgconfig(gstreamer-1.0)
+BuildRequires:	pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:	pkgconfig(gtksourceview-3.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(vte-2.90)
@@ -123,7 +123,7 @@ Ruby/Vte3 is a Ruby binding of vte3.
 %package -n ruby-goocanvas
 Summary:	Ruby binding of goocanvas
 Group:		Development/Ruby
-BuildRequires:	goocanvas-devel
+BuildRequires:	pkgconfig(goocanvas-2.0)
 
 %description -n ruby-goocanvas
 Ruby/BonoboUI2 is a Ruby binding of goocanvas.
