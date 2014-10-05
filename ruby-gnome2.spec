@@ -4,8 +4,8 @@
 
 Summary:	Set of Ruby language bindings for the GNOME 2.0
 Name:		ruby-gnome2
-Version:	1.2.6
-Release:	8
+Version:	2.2.0
+Release:	1
 License:	LGPLv2+
 Group:		Development/Ruby
 URL:		http://ruby-gnome2.sourceforge.jp/
@@ -80,14 +80,6 @@ Requires:       rubygem(gtk2)
 
 %description -n ruby-cairo-gobject
 Ruby/CairoGobject is a Ruby binding of cairo-gobject.
-
-%package -n ruby-gobject-introspection
-Summary:        Ruby binding of gobject-introspection
-Group:          Development/Ruby
-Requires:       rubygem(gtk2)
-
-%description -n ruby-gobject-introspection
-Ruby/GobjectIntrospection is a Ruby binding of gobject-introspection.
 
 %package -n ruby-gtksourceview2
 Summary:	Ruby binding of gtksourceview-2.0.x
@@ -166,6 +158,13 @@ do
 done
 
 ## Remove files packaged from gems
+rm -rf %{buildroot}%{ruby_sitelibdir}/gnome2
+
+# ruby-gobject-introspection
+rm -f %{buildroot}%{ruby_sitearchdir}/gobject_introspection.so
+rm -rf %{buildroot}%{ruby_sitelibdir}/gobject-introspection
+rm -f %{buildroot}%{ruby_sitelibdir}/gobject-introspection.rb
+
 # ruby-glib2
 rm -f %{buildroot}%{ruby_sitearchdir}/glib2.so
 rm -f %{buildroot}%{ruby_sitelibdir}/glib2.rb
@@ -228,12 +227,6 @@ rm -rf %{buildroot}poppler/{ChangeLog,README,sample,COPYING.LIB}
 %{ruby_sitelibdir}/gdk3
 %doc AUTHORS gdk3/{README.md,COPYING.LIB}
 
-%files -n ruby-gobject-introspection
-%{ruby_sitearchdir}/gobject_introspection.so
-%{ruby_sitelibdir}/gobject-introspection.rb
-%{ruby_sitelibdir}/gobject-introspection
-%doc AUTHORS gobject-introspection/{README.md,COPYING.LIB}
-
 %files -n ruby-gtk3
 %{ruby_sitearchdir}/gtk3.so
 %{ruby_sitelibdir}/gtk3.rb
@@ -254,13 +247,13 @@ rm -rf %{buildroot}poppler/{ChangeLog,README,sample,COPYING.LIB}
 %{ruby_sitearchdir}/gtksourceview3.so
 %{ruby_sitelibdir}/gtksourceview3.rb
 %{ruby_sitelibdir}/gtksourceview3
-%doc AUTHORS gtksourceview3/{README,sample,COPYING.LIB}
+%doc AUTHORS gtksourceview3/{sample,COPYING.LIB,README.md}
 
 %files -n ruby-vte3
 %{ruby_sitearchdir}/vte3.so
 %{ruby_sitelibdir}/vte3.rb
 %{ruby_sitelibdir}/vte3
-%doc AUTHORS vte3/{README,sample,COPYING.LIB}
+%doc AUTHORS vte3/{sample,COPYING.LIB,README.md}
 
 %files devel
 # Seems to be no longer installed and needed
@@ -271,14 +264,16 @@ rm -rf %{buildroot}poppler/{ChangeLog,README,sample,COPYING.LIB}
 
 %files -n ruby-gst 	 
 %{ruby_sitearchdir}/gstreamer.so 	 
-%{ruby_sitelibdir}/gst.rb 	 
-%doc AUTHORS gstreamer/{COPYING.LIB,README,tests} 	 
+%{ruby_sitelibdir}/gst.rb
+%{ruby_sitelibdir}/gst
+%doc AUTHORS gstreamer/{COPYING.LIB,README.md}
 
 %if %build_goocanvas
 %files -n ruby-goocanvas
 %doc goocanvas/README
 %{ruby_sitelibdir}/goocanvas.rb
 %{ruby_sitearchdir}/goocanvas.so
+%{ruby_sitelibdir}/goo
 %endif
 
 
