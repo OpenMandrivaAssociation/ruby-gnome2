@@ -5,7 +5,7 @@
 Summary:	Set of Ruby language bindings for the GNOME 2.0
 Name:		ruby-gnome2
 Version:	2.2.0
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		Development/Ruby
 URL:		http://ruby-gnome2.sourceforge.jp/
@@ -30,7 +30,7 @@ BuildRequires:	pkgconfig(gstreamer-1.0)
 BuildRequires:	pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:	pkgconfig(gtksourceview-3.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
-BuildRequires:	pkgconfig(vte-2.90)
+BuildRequires:	pkgconfig(vte-2.91)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 #BuildConflicts:	gtksourceview1.0
 BuildConflicts:	xulrunner-devel
@@ -112,12 +112,14 @@ Requires:       rubygem(glib2)
 %description -n ruby-rsvg2
 Ruby/Rsvg2 is a Ruby binding of Rsvg2.
 
+%if 0
 %package -n ruby-vte3
 Summary:        Ruby binding of Vte3
 Group:          Development/Ruby
 
 %description -n ruby-vte3
 Ruby/Vte3 is a Ruby binding of vte3.
+%endif
 
 %if %{build_goocanvas}
 %package -n ruby-goocanvas
@@ -132,6 +134,7 @@ Ruby/BonoboUI2 is a Ruby binding of goocanvas.
 
 %prep 
 %setup -q -n ruby-gnome2-all-%{version}
+%apply_patches
 #find -name depend -exec sed -i s/sitearchdir/vendorarchdir/ {} \;
 
 %build
@@ -249,11 +252,13 @@ rm -rf %{buildroot}poppler/{ChangeLog,README,sample,COPYING.LIB}
 %{ruby_sitelibdir}/gtksourceview3
 %doc AUTHORS gtksourceview3/{sample,COPYING.LIB,README.md}
 
+%if 0
 %files -n ruby-vte3
 %{ruby_sitearchdir}/vte3.so
 %{ruby_sitelibdir}/vte3.rb
 %{ruby_sitelibdir}/vte3
 %doc AUTHORS vte3/{sample,COPYING.LIB,README.md}
+%endif
 
 %files devel
 # Seems to be no longer installed and needed
