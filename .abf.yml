@@ -1,4 +1,5 @@
 removed_sources:
   ruby-gnome2-all-1.2.6.tar.gz: fe10b4e63706a2b8a8712fc8d3080777cde960bd
-sources:
   ruby-gnome2-all-2.2.0.tar.gz: 45d1bd38de78c320a562d3f3825f45077e26309f
+sources:
+  ruby-gnome2-all-2.2.4.tar.gz: 818d35be43ea24efd50b9f17c5d186261ebca3b3

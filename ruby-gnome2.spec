@@ -1,11 +1,9 @@
 %define rubyver 1.9
 
-%define build_goocanvas 1
-
 Summary:	Set of Ruby language bindings for the GNOME 2.0
 Name:		ruby-gnome2
-Version:	2.2.0
-Release:	3
+Version:	2.2.4
+Release:	1
 License:	LGPLv2+
 Group:		Development/Ruby
 URL:		http://ruby-gnome2.sourceforge.jp/
@@ -66,13 +64,6 @@ Group:          Development/Ruby
 %description -n ruby-gtk3
 Ruby/Gtk3 is a Ruby binding of gtk-3.0.x.
 
-%package -n ruby-gdk3
-Summary:        Ruby binding of gdk-3.0.x
-Group:          Development/Ruby
-
-%description -n ruby-gdk3
-Ruby/Gdk3 is a Ruby binding of gdk-3.0.x.
-
 %package -n ruby-cairo-gobject
 Summary:        Ruby binding of cairo-gobject
 Group:          Development/Ruby
@@ -120,17 +111,6 @@ Group:          Development/Ruby
 %description -n ruby-vte3
 Ruby/Vte3 is a Ruby binding of vte3.
 %endif
-
-%if %{build_goocanvas}
-%package -n ruby-goocanvas
-Summary:	Ruby binding of goocanvas
-Group:		Development/Ruby
-BuildRequires:	pkgconfig(goocanvas-2.0)
-
-%description -n ruby-goocanvas
-Ruby/BonoboUI2 is a Ruby binding of goocanvas.
-%endif
-
 
 %prep 
 %setup -q -n ruby-gnome2-all-%{version}
@@ -215,7 +195,7 @@ rm -rf %{buildroot}poppler/{ChangeLog,README,sample,COPYING.LIB}
 
 
 %files
-%doc AUTHORS COPYING.LIB NEWS README
+%doc AUTHORS COPYING.LIB NEWS README.md
 %{ruby_sitelibdir}/gnome2-*.rb
 %{ruby_sitelibdir}/mkmf-gnome2.rb
 
@@ -223,12 +203,6 @@ rm -rf %{buildroot}poppler/{ChangeLog,README,sample,COPYING.LIB}
 %{ruby_sitearchdir}/cairo_gobject.so
 %{ruby_sitelibdir}/cairo-gobject.rb
 %doc AUTHORS cairo-gobject/{README.md,COPYING.LIB}
-
-%files -n ruby-gdk3
-%{ruby_sitearchdir}/gdk3.so
-%{ruby_sitelibdir}/gdk3.rb
-%{ruby_sitelibdir}/gdk3
-%doc AUTHORS gdk3/{README.md,COPYING.LIB}
 
 %files -n ruby-gtk3
 %{ruby_sitearchdir}/gtk3.so
@@ -270,16 +244,9 @@ rm -rf %{buildroot}poppler/{ChangeLog,README,sample,COPYING.LIB}
 %files -n ruby-gst 	 
 %{ruby_sitearchdir}/gstreamer.so 	 
 %{ruby_sitelibdir}/gst.rb
+%{ruby_sitelibdir}/gstreamer.rb
 %{ruby_sitelibdir}/gst
 %doc AUTHORS gstreamer/{COPYING.LIB,README.md}
-
-%if %build_goocanvas
-%files -n ruby-goocanvas
-%doc goocanvas/README
-%{ruby_sitelibdir}/goocanvas.rb
-%{ruby_sitearchdir}/goocanvas.so
-%{ruby_sitelibdir}/goo
-%endif
 
 
 %changelog
