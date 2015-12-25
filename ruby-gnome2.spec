@@ -2,12 +2,12 @@
 
 Summary:	Set of Ruby language bindings for the GNOME 2.0
 Name:		ruby-gnome2
-Version:	2.2.4
-Release:	3
+Version:	3.0.7
+Release:	1
 License:	LGPLv2+
 Group:		Development/Ruby
 URL:		http://ruby-gnome2.sourceforge.jp/
-Source0: 	http://surfnet.dl.sourceforge.net/sourceforge/ruby-gnome2/%{name}-all-%{version}.tar.gz
+Source0: 	http://sf.net/projects/ruby-gnome2/files/%{name}-all-%{version}.tar.gz
 
 BuildRequires:	ruby-devel
 BuildRequires:	rubygem(pkg-config)
@@ -26,7 +26,6 @@ BuildRequires:	rubygem-cairo-devel
 BuildRequires:	rubygem(cairo)
 BuildRequires:	pkgconfig(gstreamer-1.0)
 BuildRequires:	pkgconfig(gstreamer-plugins-base-1.0)
-BuildRequires:	pkgconfig(gtksourceview-3.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(vte-2.91)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
@@ -79,13 +78,6 @@ Requires:	rubygem(gtk2)
 
 %description -n ruby-gtksourceview2
 Ruby/GtkSourceView is a Ruby binding of gtksourceview-2.0.x.
-
-%package -n ruby-gtksourceview3
-Summary:        Ruby binding of gtksourceview-3.0.x
-Group:          Development/Ruby
-
-%description -n ruby-gtksourceview3
-Ruby/GtkSourceView is a Ruby binding of gtksourceview-3.0.x.
 
 %package -n ruby-gst
 Summary:	Ruby binding of GStreamer
@@ -219,12 +211,6 @@ rm -rf %{buildroot}poppler/{ChangeLog,README,sample,COPYING.LIB}
 %{ruby_sitearchdir}/rsvg2.so
 %{ruby_sitelibdir}/rsvg2.rb
 %doc AUTHORS rsvg2/{README,sample,COPYING.LIB}
-
-%files -n ruby-gtksourceview3
-%{ruby_sitearchdir}/gtksourceview3.so
-%{ruby_sitelibdir}/gtksourceview3.rb
-%{ruby_sitelibdir}/gtksourceview3
-%doc AUTHORS gtksourceview3/{sample,COPYING.LIB,README.md}
 
 %if 0
 %files -n ruby-vte3
