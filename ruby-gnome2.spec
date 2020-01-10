@@ -106,7 +106,7 @@ Ruby/Vte3 is a Ruby binding of vte3.
 
 %prep 
 %setup -q -n ruby-gnome2-all-%{version}
-%apply_patches
+%autopatch -p1
 #find -name depend -exec sed -i s/sitearchdir/vendorarchdir/ {} \;
 
 %build
