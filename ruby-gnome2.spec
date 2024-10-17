@@ -6,7 +6,7 @@ Version:	3.0.7
 Release:	2
 License:	LGPLv2+
 Group:		Development/Ruby
-URL:		http://ruby-gnome2.sourceforge.jp/
+URL:		https://ruby-gnome2.sourceforge.jp/
 Source0: 	http://sf.net/projects/ruby-gnome2/files/%{name}-all-%{version}.tar.gz
 
 BuildRequires:	ruby-devel
