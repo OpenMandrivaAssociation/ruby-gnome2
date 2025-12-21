@@ -9,6 +9,7 @@ Group:		Development/Ruby
 URL:		https://ruby-gnome2.sourceforge.jp/
 Source0: 	http://sf.net/projects/ruby-gnome2/files/%{name}-all-%{version}.tar.gz
 
+BuildRequires:	make
 BuildRequires:	ruby-devel
 BuildRequires:	rubygem(pkg-config)
 BuildRequires:	pkgconfig(gtk+-2.0)
